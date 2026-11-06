@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harish · Portfolio: AI, data, and finance projects</title>
+<meta name="description" content="Eleven end-to-end projects across AI engineering, data engineering, data science, analytics, finance and systems, each with a live demo and tested code.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f6f2;--surface:#fff;--ink:#17191c;--soft:#5e636b;--rule:#e2e0d9;--accent:#1f4e79;--accent-soft:#e7eef6;--chip:#efeee9;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--paper:#121418;--surface:#1a1d22;--ink:#eceef1;--soft:#a1a8b2;--rule:#2b3038;--accent:#8db8e8;--accent-soft:#1f2b39;--chip:#23272e;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,"Helvetica Neue",Arial,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,40px) 72px}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+.hero{padding:64px 0 32px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.8fr);gap:40px;align-items:end}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:44px}}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.02;margin:0 0 16px}
+.hero p.lede{font-size:1.16rem;color:var(--soft);max-width:60ch;margin:0}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.94rem;padding:9px 16px;border-radius:999px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);text-decoration:none}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats div{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
+.stats b{display:block;font:600 1.9rem Fraunces,serif;line-height:1.1}
+.stats span{color:var(--soft);font-size:.88rem}
+.stats b.text{font-size:1.25rem;line-height:1.25}
+nav.roles{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);padding:12px 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-top:calc(12px + env(safe-area-inset-top,0px));margin-top:calc(-1*env(safe-area-inset-top,0px))}
+nav.roles a{white-space:nowrap;text-decoration:none;color:var(--ink);background:var(--chip);border-radius:999px;padding:7px 14px;font-size:.9rem;font-weight:500}
+nav.roles a:hover{background:var(--accent-soft);color:var(--accent)}
+section.role{padding-top:40px}
+section.role header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+section.role h2{font-size:1.75rem;margin:0}
+section.role p.blurb{color:var(--soft);margin:0 0 18px;max-width:80ch}
+.count{color:var(--soft);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card .shot{aspect-ratio:16/10;background:var(--chip);overflow:hidden;border-bottom:1px solid var(--rule)}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .3s}
+.card:hover .shot img{transform:scale(1.03)}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font-size:1.12rem}
+.card .what{margin:0;color:var(--soft);font-size:.94rem}
+.card .result{margin:0;font-size:.94rem;border-left:3px solid var(--accent);padding-left:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tags span{font-size:.76rem;background:var(--chip);color:var(--soft);border-radius:6px;padding:2px 8px}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.actions a{flex:1;text-align:center;text-decoration:none;font-weight:600;font-size:.9rem;padding:8px 10px;border-radius:8px;border:1px solid var(--rule);color:var(--ink)}
+.actions a.live{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.soon{border:1px dashed var(--rule);border-radius:14px;padding:22px;color:var(--soft)}
+.soon b{color:var(--ink)}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:56px}
+.principles div{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:16px 18px}
+.principles b{display:block;margin-bottom:4px}
+.principles p{margin:0;color:var(--soft);font-size:.94rem}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);color:var(--soft);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+  <div>
+    <h1 id="name"></h1>
+    <p class="lede" id="tagline"></p>
+    <div class="links" id="links"></div>
+  </div>
+  <div class="stats" id="stats"></div>
+</section>
+<nav class="roles" id="nav" aria-label="Project areas"></nav>
+<div id="sections"></div>
+<div class="principles">
+  <div><b>Real data, credited</b><p>Public datasets with their licenses noted. Where real data can't exist publicly, such as a retailer's settlements or budget, it's generated and labeled as such.</p></div>
+  <div><b>Tested, not just run</b><p>Every project has automated tests and CI. Results in the READMEs are generated by the code, not typed in.</p></div>
+  <div><b>Caught and fixed</b><p>Each project documents something that went wrong: a label leak, a silent spreadsheet bug, a model that lost to a simpler one.</p></div>
+  <div><b>Honest limits</b><p>What wasn't tested, what's simulated, and what I'd do next is written down in each repository.</p></div>
+</div>
+<footer><span id="foot"></span><span>Every card links to a live demo and the source code.</span></footer>
+</main>
+<script>
+// ---- Edit these -------------------------------------------------------------
+const ME = {
+  name: "Harish",
+  tagline: "I build data and AI systems end to end, from messy source data to tested pipelines, models, and decision tools people can actually use. Projects below are grouped by the role they're most relevant to.",
+  github: "https://github.com/harish04010",
+  linkedin: "",   // e.g. "https://www.linkedin.com/in/your-handle"
+  email: "",      // e.g. "you@example.com"
+  resume: "",     // e.g. a link to a PDF
+};
+// -----------------------------------------------------------------------------
+const P = {
+  waybill: { title: "Waybill", img: "waybill", live: "https://waybill-theta.vercel.app", repo: "waybill",
+    what: "Four AI agents that quote, book, track and update freight shipments in parallel, with a live operations dashboard.",
+    result: "Checkpointed stages survive crashes; guardrails block a misbehaving model; risky deals wait for human approval.",
+    tags: ["Python", "FastAPI", "Next.js", "TypeScript", "LLM agents", "SQLite"] },
+  jetway: { title: "Jetway", img: "jetway", live: "https://jetway-kappa.vercel.app", repo: "jetway",
+    what: "Triage for 14,000 real airline tweets: routing, human handoff, RAG-drafted replies, an API, drift monitoring and Docker.",
+    result: "Found a label leak in 1,470 tweets; retrieval improves from 70% to 80% with the predicted route; the drift monitor caught the worst day without labels.",
+    tags: ["NLP", "RAG", "scikit-learn", "Keras", "FastAPI", "Docker", "MLOps"] },
+  lanebench: { title: "Lanebench", img: "lanebench", live: "https://lanebench.vercel.app", repo: "lanebench",
+    what: "An evaluation harness for AI agents: negotiation strategies against simulated carriers, and parsers for messy driver texts.",
+    result: "A rule parser scored 98% on its dev set and 30% on held-out data. The held-out set caught the overfitting.",
+    tags: ["LLM evals", "Python", "Simulation"] },
+  haulroute: { title: "Haulroute", img: "haulroute", live: "https://haulroute-eight.vercel.app", repo: "haulroute",
+    what: "A C++17 routing engine with Dijkstra, bidirectional search, A* and contraction hierarchies. Watch them race.",
+    result: "121× faster than Dijkstra on 250,000 intersections, every answer verified, clean under sanitizers.",
+    tags: ["C++17", "Algorithms", "CMake", "Performance"] },
+  ridgeline: { title: "Ridgeline Analytics", img: "ridgeline", live: "https://ridgeline-analytics.vercel.app", repo: "ridgeline-analytics",
+    what: "A raw-to-dashboard analytics stack: SQL models in a star schema, data tests, an executive dashboard and ask-the-data.",
+    result: "Caught a reporting trap: comparing an unsettled month made growth look like 26% when it was about 11%.",
+    tags: ["SQL", "DuckDB", "dbt-style models", "Next.js", "Data quality"] },
+  retention: { title: "Retention Targeting", img: "retention", live: "https://retention-targeting.vercel.app", repo: "retention-targeting",
+    what: "A churn model on real telecom data turned into a decision about who gets a retention offer, with a live simulator.",
+    result: "Calling everyone loses $13.9K; targeting earns about $10.7K. Age was left out for fairness at a cost of 0.001 AUC.",
+    tags: ["Python", "scikit-learn", "Expected value", "Fairness"] },
+  credit: { title: "Credit Risk Scorecard", img: "credit", live: "https://credit-risk-scorecard-ten.vercel.app", repo: "credit-risk-scorecard",
+    what: "A bank-style behavioral scorecard on 30,000 real accounts, independently rebuilt in R, with loss forecasting and a stress test.",
+    result: "R validation caught two bugs. 'Default' in the data means a missed payment, not a loss, which would overstate losses by about 19×.",
+    tags: ["Python", "R", "SQL", "WoE / IV", "Basel stress test"] },
+  fraud: { title: "Card Fraud Detection", img: "fraud", live: "https://card-fraud-detection-eight.vercel.app", repo: "card-fraud-detection",
+    what: "A fraud model on 284,807 real card transactions, judged by analyst review capacity and euros saved.",
+    result: "Reviewing 0.1% of transactions catches 69% of fraud. The anomaly detector and the 'largest amounts' rule both failed.",
+    tags: ["Python", "Imbalanced learning", "Cost-based thresholds"] },
+  lakehouse: { title: "Market Data Lakehouse", img: "lakehouse", live: "https://market-data-lakehouse.vercel.app", repo: "market-data-lakehouse",
+    what: "Nine real market and macro datasets through bronze, silver and gold layers, with contracts, quarantine and freshness checks.",
+    result: "Caught stale VIX data, and earnings that silently stopped updating in 2023 while prices kept flowing.",
+    tags: ["Python", "DuckDB", "PySpark", "Orchestration", "Data contracts"] },
+  treasury: { title: "Treasury Reconciliation", img: "treasury", live: "https://treasury-recon.vercel.app", repo: "treasury-recon",
+    what: "A month-end close for a 40-store retailer: POS, card processors and bank matched three ways, with Oracle-format journal entries.",
+    result: "Found $36K of processor overbilling and a missing deposit; every clearing account ties to $0.00.",
+    tags: ["Excel (1,178 formulas)", "Python", "Reconciliation", "Oracle GL"] },
+  fpa: { title: "FP&A Operating Plan", img: "fpa", live: "https://fpa-operating-plan.vercel.app", repo: "fpa-operating-plan",
+    what: "A driver-based plan for a $5B retailer: budget vs actual, price/volume/mix bridges, an 8+4 forecast and scenarios.",
+    result: "Revenue beat plan; margin didn't. Freight, overtime and marketing ate most of the price gain.",
+    tags: ["Excel (1,434 formulas)", "Power BI kit", "DAX", "Forecasting"] },
+};
+const ROLES = [
+  { id: "ai", name: "AI Engineering", blurb: "Agents, retrieval, evaluation and serving: systems where a model is one part and the guardrails around it matter as much.", items: ["waybill", "jetway", "lanebench"] },
+  { id: "data-engineering", name: "Data Engineering", blurb: "Pipelines that are incremental, idempotent and tested, with contracts that keep bad data out of the tables people query.", items: ["lakehouse", "ridgeline"] },
+  { id: "data-science", name: "Data Science & ML", blurb: "Models judged by the decision they drive, validated on later or held-out data, with fairness and calibration checked.", items: ["credit", "fraud", "retention", "jetway"] },
+  { id: "analytics", name: "Analytics & BI", blurb: "From raw tables to answers a business can act on, with the cleaning and the caveats shown, not hidden.", items: ["ridgeline", "retention", "fraud", "fpa"] },
+  { id: "finance", name: "Finance, Treasury & FP&A", blurb: "Close, reconcile, plan and explain. Built in Excel the way finance teams build, with a web view on top.", items: ["treasury", "fpa", "credit"] },
+  { id: "software", name: "Software & Systems", blurb: "Performance, correctness and clean architecture: compiled code, typed front ends and services with tests.", items: ["haulroute", "waybill", "lakehouse"] },
+  { id: "ventures", name: "Investment & Ventures", blurb: "Equity research, venture evaluation and technology commercialization cases.", items: [], soon: "In progress: an equity research initiation with an interactive DCF, a venture memo with bottom-up market sizing, and a technology commercialization assessment." },
+];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("name").textContent = ME.name;
+document.getElementById("tagline").textContent = ME.tagline;
+document.title = `${ME.name} · Portfolio`;
+document.getElementById("links").innerHTML = [
+  ME.github && `<a class="btn primary" href="${ME.github}">GitHub</a>`,
+  ME.linkedin && `<a class="btn" href="${ME.linkedin}">LinkedIn</a>`,
+  ME.resume && `<a class="btn" href="${ME.resume}">Résumé</a>`,
+  ME.email && `<a class="btn" href="mailto:${ME.email}">Email</a>`,
+].filter(Boolean).join("");
+document.getElementById("stats").innerHTML = [
+  [Object.keys(P).length, "projects, each live"], [ROLES.filter(r => r.items.length).length, "role areas"],
+  ["Python · SQL", "plus C++, TypeScript, R"], ["Excel · Power BI", "for the finance work"],
+].map(([b, s]) => `<div><b class="${typeof b === "number" ? "" : "text"}">${b}</b><span>${s}</span></div>`).join("");
+document.getElementById("nav").innerHTML = ROLES.map(r => `<a href="#${r.id}">${r.name}</a>`).join("");
+const card = k => { const p = P[k]; return `<article class="card"><a class="shot" href="${p.live}" aria-label="${esc(p.title)} live demo"><img src="img/${p.img}.webp" alt="Screenshot of ${esc(p.title)}" loading="lazy" width="720" height="450"></a>
+  <div class="body"><h3>${esc(p.title)}</h3><p class="what">${esc(p.what)}</p><p class="result">${esc(p.result)}</p>
+  <div class="tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
+  <div class="actions"><a class="live" href="${p.live}">Live demo</a><a href="https://github.com/harish04010/${p.repo}">Code</a></div></div></article>`; };
+document.getElementById("sections").innerHTML = ROLES.map(r => `<section class="role" id="${r.id}"><header><h2>${r.name}</h2>${r.items.length ? `<span class="count">${r.items.length} projects</span>` : ""}</header>
+  <p class="blurb">${r.blurb}</p>${r.items.length ? `<div class="grid">${r.items.map(card).join("")}</div>` : `<div class="soon"><b>Coming soon.</b> ${r.soon}</div>`}</section>`).join("");
+document.getElementById("foot").innerHTML = `© ${new Date().getFullYear()} ${esc(ME.name)} · <a href="${ME.github}">github.com/harish04010</a>`;
+</script>
+</body>
+</html>
