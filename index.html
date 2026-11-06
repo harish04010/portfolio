@@ -136,6 +136,14 @@ const P = {
     what: "An initiation on a $4B sporting goods retailer: interactive DCF, sensitivity, earnings cross-check, bull and bear debate, catalysts and risks.",
     result: "Hold, base-case value about $71 vs $67.69. The stock prices in store growth with flat comps; margin, not sales, is the lever.",
     tags: ["Valuation", "DCF", "SEC filings", "Equity research"] },
+  venture: { title: "Seed memo: AI agents for freight brokers", img: "venture", live: "/cases/venture/", repoPath: "portfolio/tree/main/cases/venture",
+    what: "A seed-stage venture memo with bottom-up market sizing from FMCSA broker data, live unit economics, competition and an investment scorecard.",
+    result: "Track, revisit at traction: a $115M reachable market and a 10-month payback, but 5% share is only $6M of revenue by year 5.",
+    tags: ["Market sizing", "Unit economics", "Venture memo", "TAM / SAM / SOM"] },
+  techcomm: { title: "Tech commercialization: ORNL battery recycling", img: "techcomm", live: "/cases/techcomm/", repoPath: "portfolio/tree/main/cases/techcomm",
+    what: "A commercialization assessment of a patented ORNL direct-recycling method: readiness, markets, licensees, deal structure and a risk-adjusted NPV.",
+    result: "Pursue a non-exclusive license for factory scrap first: worth about $26M to a 20 GWh licensee, risk-adjusted.",
+    tags: ["Technology transfer", "TRL", "Licensing", "rNPV"] },
   fpa: { title: "FP&A Operating Plan", img: "fpa", live: "https://fpa-operating-plan.vercel.app", repo: "fpa-operating-plan",
     what: "A driver-based plan for a $5B retailer: budget vs actual, price/volume/mix bridges, an 8+4 forecast and scenarios.",
     result: "Revenue beat plan; margin didn't. Freight, overtime and marketing ate most of the price gain.",
@@ -148,7 +156,7 @@ const ROLES = [
   { id: "analytics", name: "Analytics & BI", blurb: "From raw tables to answers a business can act on, with the cleaning and the caveats shown, not hidden.", items: ["ridgeline", "retention", "fraud", "fpa"] },
   { id: "finance", name: "Finance, Treasury & FP&A", blurb: "Close, reconcile, plan and explain. Built in Excel the way finance teams build, with a web view on top.", items: ["treasury", "fpa", "credit"] },
   { id: "software", name: "Software & Systems", blurb: "Performance, correctness and clean architecture: compiled code, typed front ends and services with tests.", items: ["haulroute", "waybill", "lakehouse"] },
-  { id: "ventures", name: "Investment & Ventures", blurb: "Equity research, venture evaluation and technology commercialization cases, built from primary sources and cited.", items: ["aso", "lakehouse", "credit"], soon: "Next: a venture memo with bottom-up market sizing, and a technology commercialization assessment." },
+  { id: "ventures", name: "Investment & Ventures", blurb: "An equity research initiation, a seed-stage venture memo and a technology commercialization assessment, each built from cited primary sources with a live model.", items: ["aso", "venture", "techcomm", "lakehouse"] },
 ];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 document.getElementById("name").textContent = ME.name;
@@ -161,7 +169,7 @@ document.getElementById("links").innerHTML = [
   ME.phone && `<a class="btn" href="tel:+1${ME.phone.replace(/\D/g, "")}">${ME.phone}</a>`,
 ].filter(Boolean).join("");
 document.getElementById("stats").innerHTML = [
-  [Object.keys(P).length - 1, "projects + 1 research case"], [ROLES.filter(r => r.items.length).length, "role areas"],
+  [11, "projects + 3 business cases"], [ROLES.filter(r => r.items.length).length, "role areas"],
   ["Python · SQL", "plus C++, TypeScript, R"], ["Excel · Power BI", "for the finance work"],
 ].map(([b, s]) => `<div><b class="${typeof b === "number" ? "" : "text"}">${b}</b><span>${s}</span></div>`).join("");
 document.getElementById("nav").innerHTML = ROLES.map(r => `<a href="#${r.id}">${r.name}</a>`).join("");

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seed memo: AI agents for freight brokerages</title>
+<meta name="description" content="A seed-stage venture memo on AI agents for freight brokerage operations, with bottom-up market sizing from FMCSA data and live unit economics.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f6f2;--surface:#fff;--ink:#15191d;--soft:#5c636b;--rule:#dfe2da;--accent:#3c5a2e;--good:#2b7a50;--mid:#b07a12;--bad:#b0383a;--chip:#eceee8;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--paper:#121513;--surface:#1a1e1b;--ink:#eceeea;--soft:#a2a9a3;--rule:#2b312d;--accent:#9ccc82;--good:#5fc28c;--mid:#e2b24d;--bad:#ec7d7f;--chip:#232823;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,"Helvetica Neue",Arial,sans-serif}
+.hr-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px clamp(14px,3vw,32px);font:500 13px/1.4 -apple-system,"Segoe UI",Inter,Arial,sans-serif;background:#f1f2f4;color:#3b4250;border-bottom:1px solid #dfe2e7}
+.hr-bar a{color:inherit;text-decoration:none}.hr-bar a:hover{text-decoration:underline}
+@media (prefers-color-scheme:dark){.hr-bar{background:#171b21;color:#b4bcc8;border-bottom-color:#2a313b}}
+main{max-width:1120px;margin:0 auto;padding:36px clamp(16px,3vw,36px) 64px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;margin:4px 0 10px}
+h2{font-size:1.6rem;margin:0 0 8px}
+.soft{color:var(--soft)}.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.kicker{font-weight:600;color:var(--soft);font-size:.9rem;margin:0}
+.top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:28px;align-items:start}
+@media (max-width:880px){.top{grid-template-columns:1fr}}
+.lede{font-size:1.1rem;max-width:68ch}
+.ticket{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px}
+.badge{display:inline-block;font-weight:700;letter-spacing:.05em;padding:6px 12px;border-radius:6px;color:#fff;background:var(--accent)}
+.ticket .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.ticket .row:last-child{border-bottom:0}.ticket .row b{text-align:right}
+section{margin-top:48px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:880px){.grid2{grid-template-columns:1fr}}
+.model{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.95fr);gap:20px}
+@media (max-width:880px){.model{grid-template-columns:1fr}}
+.slider{margin-bottom:14px}
+.slider label{display:flex;justify-content:space-between;font-weight:500;gap:10px}
+.slider output{font-family:"JetBrains Mono",monospace}
+.slider input{width:100%;accent-color:var(--accent)}
+.slider small{color:var(--soft)}
+.big{font:600 2.4rem Newsreader,serif;line-height:1.05}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.93rem}
+th,td{padding:7px 9px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.78rem;color:var(--soft);font-weight:600}
+tr.total td{font-weight:700;border-top:2px solid var(--ink)}
+svg{width:100%;height:auto;display:block}
+.axis{fill:var(--soft);font-size:11px;font-family:inherit}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tile{background:var(--paper);border-radius:8px;padding:10px 12px}.tile b{display:block;font:600 1.4rem Newsreader,serif}
+.score td:nth-child(3){text-align:left;color:var(--soft);font-size:.88rem}
+.dots{letter-spacing:2px;color:var(--accent);font-size:1.05rem}
+ul.tight{padding-left:20px;margin:8px 0 0}ul.tight li{margin-bottom:8px}
+ol.src{padding-left:20px;font-size:.9rem;color:var(--soft)}ol.src a{color:var(--accent)}
+.note{font-size:.88rem;color:var(--soft)}
+.foot{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);font-size:.86rem;color:var(--soft)}
+</style>
+</head>
+<body>
+<nav class="hr-bar" aria-label="Portfolio"><a href="/">&larr; Harish Gopu's portfolio</a><a href="https://github.com/harish04010/portfolio/tree/main/cases/venture">View the model on GitHub &rarr;</a></nav>
+<main>
+<div class="top">
+  <div>
+    <p class="kicker">Venture memo · Seed stage · Logistics software · November 2026</p>
+    <h1>AI agents for freight brokerages: great economics, unproven scale</h1>
+    <p class="lede" id="lede"></p>
+  </div>
+  <aside class="ticket" id="ticket"></aside>
+</div>
+
+<section class="grid2">
+  <div class="card"><h2>The company</h2>
+  <p>A seed-stage startup (a composite, not a specific firm) selling AI agents that do the repetitive work inside a freight brokerage: quoting loads, booking carriers, chasing tracking updates, and keeping shippers informed. It sells per operations seat, priced below the cost of the hours it saves.</p>
+  <p class="soft" style="margin:0">Why it's plausible: the same workflow is built and tested in <a href="https://waybill-theta.vercel.app" style="color:var(--accent)">Waybill</a>, a project in this portfolio, including the guardrails and human approval a broker would insist on.</p></div>
+  <div class="card"><h2>Why now</h2><ul class="tight">
+    <li><b>Models can now do the work, not just draft it.</b> Tool-using language models can read a rate confirmation, negotiate within limits and update a TMS, with code enforcing the limits.</li>
+    <li><b>Brokers are under margin pressure.</b> Shippers put loads out to 5–10 brokers, compressing spreads on dry van to 10% or less [4]; labor is the cost line they can move.</li>
+    <li><b>The long tail is enormous.</b> About 25,000 entities hold active broker authority, and most are small teams without in-house engineering [1].</li></ul></div>
+</section>
+
+<section><h2>Market size: why top-down numbers fail here</h2>
+<div class="grid2">
+  <div class="card"><p class="soft" style="margin:0 0 8px">Published estimates of the US freight brokerage market disagree by more than 20×, because they measure different things.</p><svg id="topdown" viewBox="0 0 520 220"></svg>
+  <p class="note">The $160B figure is gross freight revenue flowing through brokers [2]; the $7.65B–$20.6B figures are research-firm estimates of brokerage revenue on narrower definitions [3][5]. None tells you what a broker would pay for software, so we size bottom-up instead.</p></div>
+  <div class="card"><h2 style="font-size:1.25rem">Bottom-up, from firms and seats</h2><table id="tam"></table>
+  <p class="note" style="margin-top:8px">Firm counts: FMCSA active broker authorities [1], with the size split from industry data: 800–1,000 brokerages above $10M in revenue and about 3,000 more above $1M [2]. Seats and price are assumptions; move them below.</p></div>
+</div></section>
+
+<section><h2>Unit economics and the five-year path</h2>
+<div class="model">
+  <div class="card" id="sliders"></div>
+  <div class="card"><span class="soft">Payback on customer acquisition cost</span><div class="big" id="payback"></div><div id="ue"></div>
+    <div class="tiles" id="tiles"></div><svg id="arr" viewBox="0 0 520 180" style="margin-top:12px"></svg><p class="note" id="arrnote"></p></div>
+</div></section>
+
+<section class="grid2">
+  <div class="card"><h2>Competition</h2><table><thead><tr><th>Who</th><th style="text-align:left">Threat</th></tr></thead><tbody>
+    <tr><td>Large brokers building in-house</td><td style="text-align:left">High for the top tier, which has engineering teams. Why we exclude most of it from the reachable market.</td></tr>
+    <tr><td>TMS and load-board vendors adding AI</td><td style="text-align:left">The biggest threat. They own the workflow and the data; AI can ship as a feature.</td></tr>
+    <tr><td>Other AI-agent startups</td><td style="text-align:left">Crowded and well funded. Differentiation has to come from reliability and integrations, not the model.</td></tr>
+    <tr><td>Offshore back-office services</td><td style="text-align:left">The real incumbent for small brokers: cheap people. The price ceiling for the product.</td></tr></tbody></table></div>
+  <div class="card"><h2>Investment scorecard</h2><table class="score" id="score"></table></div>
+</section>
+
+<section class="grid2">
+  <div class="card"><h2>Key risks</h2><ul class="tight">
+    <li><b>Feature, not company.</b> If the TMS vendors ship good-enough agents, a standalone product gets squeezed.</li>
+    <li><b>Reliability.</b> A booking error costs a broker real money and a carrier relationship. Guardrails and human approval are the product, not an add-on.</li>
+    <li><b>Inference costs.</b> Gross margin depends on model prices; a 70% SaaS-like margin isn't guaranteed.</li>
+    <li><b>Freight cycles.</b> When freight volumes fall, brokers cut seats first.</li></ul></div>
+  <div class="card"><h2>What diligence has to answer</h2><ul class="tight">
+    <li><b>Integration depth:</b> does it write back into the top three TMS platforms, or just sit beside them?</li>
+    <li><b>Error rate in production:</b> loads booked per human correction, measured on real customers.</li>
+    <li><b>Retention by cohort:</b> do mid-size brokers keep their seats through a soft freight quarter?</li>
+    <li><b>Team:</b> someone who has run a brokerage floor, plus engineers who've shipped agent systems. Unscored here because a composite has no team.</li></ul></div>
+</section>
+
+<section><h2>Sources</h2><ol class="src">
+  <li><a href="https://draylo.us/data/freight-brokers">Count of entities holding active FMCSA broker authority</a>: 25,081 as of October 2026, recomputed from FMCSA's authority file. FMCSA Registration Statistics showed 25,074 brokers on May 15, 2026.</li>
+  <li><a href="https://freightcaviar.com/freight-broker-statistics">Freight brokerage industry statistics (FreightCaviar)</a>: ~$160B gross revenue; 800–1,000 brokerages above $10M; about 3,000 more above $1M.</li>
+  <li><a href="https://www.coherentmarketinsights.com/industry-reports/freight-brokerage-market">Coherent Market Insights, freight brokerage market report</a>: US market of USD 7.65B in 2026.</li>
+  <li><a href="https://ideacrystal.com/en/is-it-profitable/freight-brokerage">Freight brokerage profitability overview (2026)</a>: shippers bid loads to 5–10 brokers; dry-van spreads of 10% or less.</li>
+  <li><a href="https://www.freightamigo.com/en/blog/logistics/freight-broker-guide-understanding-freight-broking-and-shipping-brokers-in-2026/">FreightAmigo 2026 guide</a>, citing Market Data Forecast: US brokerage market USD 19.0B (2025) to 20.6B (2026).</li></ol></section>
+
+<footer class="foot">A student case study built for a portfolio. The company is a composite; firm counts and market figures are cited, and seats, prices and unit-economics inputs are the author's assumptions, adjustable above. Not investment advice.</footer>
+</main>
+<script>
+const TIERS = [  // cited counts [1][2]; seats are assumptions
+  { name: "Large (> $10M revenue)", firms: 900, key: "large", reach: false },
+  { name: "Mid ($1M–$10M)", firms: 3000, key: "mid", reach: true },
+  { name: "Small (< $1M)", firms: 25081 - 3900, key: "small", reach: false },
+];
+const A = { large: 40, mid: 8, small: 1.5, price: 4800, share: 5, cac: 22000, gm: 70, churn: 15, growth: 2.2 };
+const SL = [
+  ["mid", "Ops seats per mid-size broker", 3, 20, 1, v => v.toFixed(0), "The reachable market. Large brokers often build in-house; small ones churn."],
+  ["large", "Ops seats per large broker", 10, 120, 5, v => v.toFixed(0), "Counts toward the total market, not the reachable one."],
+  ["small", "Ops seats per small broker", 1, 4, 0.5, v => v.toFixed(1), ""],
+  ["price", "Price per seat per year", 1200, 12000, 300, v => "$" + v.toLocaleString(), "Below the cost of a part-time coordinator."],
+  ["share", "Share of mid-size brokers won by year 5", 1, 20, 0.5, v => v.toFixed(1) + "%", ""],
+  ["cac", "Cost to acquire one customer", 5000, 60000, 1000, v => "$" + v.toLocaleString(), "Sales and onboarding, blended."],
+  ["gm", "Gross margin", 40, 85, 1, v => v + "%", "After model inference and hosting costs."],
+  ["churn", "Annual customer churn", 5, 40, 1, v => v + "%", ""],
+];
+const M = v => v >= 1e9 ? "$" + (v / 1e9).toFixed(2) + "B" : "$" + (v / 1e6).toFixed(0) + "M";
+document.getElementById("sliders").innerHTML = SL.map(([k, lab, mn, mx, st, , help]) => `<div class="slider"><label for="s-${k}"><span>${lab}</span><output id="o-${k}"></output></label><input id="s-${k}" type="range" min="${mn}" max="${mx}" step="${st}" value="${A[k]}">${help ? `<small>${help}</small>` : ""}</div>`).join("");
+SL.forEach(([k]) => document.getElementById(`s-${k}`).oninput = e => { A[k] = +e.target.value; render(); });
+
+function calc(a) {
+  const rows = TIERS.map(t => ({ ...t, seats: t.firms * a[t.key], value: t.firms * a[t.key] * a.price }));
+  const tam = rows.reduce((s, r) => s + r.value, 0), sam = rows.filter(r => r.reach).reduce((s, r) => s + r.value, 0);
+  const acv = a.mid * a.price, customers5 = TIERS[1].firms * a.share / 100, arr5 = customers5 * acv;
+  const payback = a.cac / (acv * a.gm / 100 / 12), ltv = acv * a.gm / 100 / (a.churn / 100);
+  return { rows, tam, sam, acv, customers5, arr5, payback, ltv, ratio: ltv / a.cac };
+}
+function verdict(c) {
+  if (c.sam >= 75e6 && c.payback <= 18 && c.ratio >= 3 && c.arr5 >= 10e6) return ["Invest, with conditions", "var(--good)"];
+  if (c.sam >= 40e6 && c.payback <= 30 && c.ratio >= 2) return ["Track; revisit at traction", "var(--mid)"];
+  return ["Pass at these economics", "var(--bad)"];
+}
+function render() {
+  SL.forEach(([k, , , , , fmt]) => document.getElementById(`o-${k}`).textContent = fmt(A[k]));
+  const c = calc(A), [v, col] = verdict(c);
+  document.getElementById("tam").innerHTML = `<thead><tr><th>Segment</th><th>Firms</th><th>Seats</th><th>Annual value</th></tr></thead><tbody>` +
+    c.rows.map(r => `<tr><td>${r.name}${r.reach ? " <b style='color:var(--accent)'>· reachable</b>" : ""}</td><td>${r.firms.toLocaleString()}</td><td>${Math.round(r.seats).toLocaleString()}</td><td>${M(r.value)}</td></tr>`).join("") +
+    `<tr class="total"><td>Total addressable (TAM)</td><td>${(25081).toLocaleString()}</td><td></td><td>${M(c.tam)}</td></tr>
+     <tr><td><b>Reachable at seed (SAM)</b></td><td></td><td></td><td><b>${M(c.sam)}</b></td></tr>
+     <tr><td>Obtainable by year 5 (SOM)</td><td>${Math.round(c.customers5)} customers</td><td></td><td>${M(c.arr5)}</td></tr></tbody>`;
+  document.getElementById("payback").textContent = c.payback.toFixed(1) + " months";
+  document.getElementById("ue").innerHTML = `<span style="color:${col};font-weight:700">${v}</span> <span class="soft">· tests: reachable market ≥ $75M, payback ≤ 18 months, LTV/CAC ≥ 3×, and a ≥ $10M run-rate by year 5</span>`;
+  document.getElementById("tiles").innerHTML = [["Contract value (mid broker)", "$" + Math.round(c.acv).toLocaleString() + "/yr"], ["Lifetime value / CAC", c.ratio.toFixed(1) + "×"],
+    ["Year-5 revenue run-rate", M(c.arr5)], ["Customers by year 5", Math.round(c.customers5).toLocaleString()]].map(([k, x]) => `<div class="tile"><span class="soft">${k}</span><b>${x}</b></div>`).join("");
+  // S-curve ramp to the year-5 customer count
+  const yrs = [1, 2, 3, 4, 5], share = yrs.map(y => 1 / (1 + Math.exp(-A.growth * (y - 3.3)))), norm = share.map(s => s / share[4]);
+  const arr = norm.map(s => s * c.arr5), W = 520, H = 180, L = 44, R = 8, T = 10, B = 26, hi = Math.max(...arr) * 1.15 || 1, bw = (W - L - R) / 5 * .55;
+  const x = i => L + (W - L - R) * (i + .5) / 5, y = val => T + (H - T - B) * (1 - val / hi);
+  let o = [0, .5, 1].map(f => `<line x1="${L}" x2="${W - R}" y1="${y(hi * f / 1.15)}" y2="${y(hi * f / 1.15)}" stroke="var(--rule)"/><text class="axis" x="${L - 6}" y="${y(hi * f / 1.15) + 4}" text-anchor="end">${M(hi * f / 1.15)}</text>`).join("");
+  arr.forEach((val, i) => o += `<rect x="${x(i) - bw / 2}" y="${y(val)}" width="${bw}" height="${H - B - y(val)}" fill="var(--accent)" rx="2"/><text class="axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">Year ${i + 1}</text>`);
+  document.getElementById("arr").innerHTML = o;
+  document.getElementById("arrnote").textContent = `Revenue run-rate ramps on an S-curve to ${Math.round(c.customers5)} mid-size customers (${A.share}% of ${TIERS[1].firms.toLocaleString()}). A seed investor typically needs a path to about $10M+ run-rate to support a Series A; this path ${c.arr5 >= 10e6 ? "gets there" : "falls short"} at these inputs.`;
+  const scores = [["Market", c.sam >= 75e6 ? 4 : c.sam >= 40e6 ? 3 : 2, `Reachable ${M(c.sam)} from ${TIERS[1].firms.toLocaleString()} mid-size brokers; TAM ${M(c.tam)}.`],
+    ["Why now", 4, "Agent-capable models plus broker margin pressure."],
+    ["Unit economics", c.payback <= 12 ? 5 : c.payback <= 18 ? 4 : c.payback <= 30 ? 3 : 2, `${c.payback.toFixed(1)}-month payback, ${c.ratio.toFixed(1)}× LTV/CAC.`],
+    ["Defensibility", 2, "Weakest point. TMS vendors own the workflow; moat must come from integrations and reliability data."],
+    ["Team", null, "Unscored: a composite company has no team. The deciding diligence item."]];
+  document.getElementById("score").innerHTML = `<thead><tr><th>Dimension</th><th>Score</th><th>Why</th></tr></thead><tbody>` +
+    scores.map(([k, s, w]) => `<tr><td>${k}</td><td class="dots">${s == null ? "<span class='soft' style='letter-spacing:0;font-size:.85rem'>diligence</span>" : "●".repeat(s) + "○".repeat(5 - s)}</td><td>${w}</td></tr>`).join("") + "</tbody>";
+  document.getElementById("ticket").innerHTML = `<span class="badge" style="background:${col}">${v.toUpperCase()}</span>
+    <div class="row" style="margin-top:12px"><span>Reachable market (SAM)</span><b>${M(c.sam)}</b></div>
+    <div class="row"><span>Total addressable (TAM)</span><b>${M(c.tam)}</b></div>
+    <div class="row"><span>CAC payback</span><b>${c.payback.toFixed(1)} months</b></div>
+    <div class="row"><span>LTV / CAC</span><b>${c.ratio.toFixed(1)}×</b></div>
+    <div class="row"><span>Biggest risk</span><b>TMS vendors ship it as a feature</b></div>`;
+  const scale = c.arr5 >= 10e6
+    ? `Winning ${A.share}% of them gets to a ${M(c.arr5)} run-rate by year 5, enough to raise a Series A.`
+    : `Winning ${A.share}% of them reaches only a ${M(c.arr5)} run-rate by year 5, short of the ~$10M a Series A usually needs. Venture scale depends on breaking into large brokers or expanding revenue per customer.`;
+  document.getElementById("lede").innerHTML = `<b>${v}.</b> Bottom-up, the market is real: ${TIERS[1].firms.toLocaleString()} mid-size brokerages are worth about <b>${M(c.sam)}</b> a year in operations seats, and the unit economics clear venture thresholds with a ${c.payback.toFixed(0)}-month payback and ${c.ratio.toFixed(1)}× lifetime value to acquisition cost. The questions are scale and defensibility. ${scale} Meanwhile the transportation management systems brokers already use can ship agents as a feature. We'd invest only with evidence of deep TMS integration, production error rates a broker would trust with live loads, and a credible path into larger accounts.`;
+}
+render();
+(() => { const est = [["Coherent Market Insights (US, 2026)", 7.65], ["Market Data Forecast (US, 2026)", 20.64], ["Gross freight through brokers", 160]];
+  const W = 520, H = 220, L = 210, R = 60, rowH = 58, max = 170;
+  let o = ""; est.forEach(([k, v], i) => { const y = 20 + i * rowH, w = (W - L - R) * v / max;
+    o += `<text x="0" y="${y + 18}" style="fill:var(--ink);font-size:13px">${k}</text><rect x="${L}" y="${y}" width="${Math.max(w, 2)}" height="28" rx="3" fill="${i === 2 ? "var(--mid)" : "var(--accent)"}"/><text x="${L + Math.max(w, 2) + 8}" y="${y + 19}" style="fill:var(--ink);font-weight:700;font-size:13px">$${v}B</text>`; });
+  document.getElementById("topdown").innerHTML = o; })();
+</script>
+</body>
+</html>

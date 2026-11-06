@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Technology commercialization: ORNL direct battery recycling</title>
+<meta name="description" content="A technology commercialization assessment of Oak Ridge National Laboratory's direct recycling method for lithium-ion battery electrodes, with a risk-adjusted licensing valuation.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f6f7;--surface:#fff;--ink:#151a1e;--soft:#5b636c;--rule:#dde2e6;--accent:#0f6b6b;--good:#2b7a50;--mid:#b07a12;--bad:#b0383a;--chip:#e9eef1;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--paper:#111517;--surface:#192024;--ink:#eaeff2;--soft:#a0aab3;--rule:#29323a;--accent:#6fd0cf;--good:#5fc28c;--mid:#e2b24d;--bad:#ec7d7f;--chip:#20282d;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,"Helvetica Neue",Arial,sans-serif}
+.hr-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px clamp(14px,3vw,32px);font:500 13px/1.4 -apple-system,"Segoe UI",Inter,Arial,sans-serif;background:#f1f2f4;color:#3b4250;border-bottom:1px solid #dfe2e7}
+.hr-bar a{color:inherit;text-decoration:none}.hr-bar a:hover{text-decoration:underline}
+@media (prefers-color-scheme:dark){.hr-bar{background:#171b21;color:#b4bcc8;border-bottom-color:#2a313b}}
+main{max-width:1120px;margin:0 auto;padding:36px clamp(16px,3vw,36px) 64px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;margin:4px 0 10px}
+h2{font-size:1.6rem;margin:0 0 8px}
+.soft{color:var(--soft)}
+.kicker{font-weight:600;color:var(--soft);font-size:.9rem;margin:0}
+.top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:28px;align-items:start}
+@media (max-width:880px){.top{grid-template-columns:1fr}}
+.lede{font-size:1.1rem;max-width:68ch}
+.ticket{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px}
+.badge{display:inline-block;font-weight:700;letter-spacing:.05em;padding:6px 12px;border-radius:6px;color:#fff}
+.ticket .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.ticket .row:last-child{border-bottom:0}.ticket .row b{text-align:right}
+section{margin-top:48px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:880px){.grid2{grid-template-columns:1fr}}
+.model{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.95fr);gap:20px}
+@media (max-width:880px){.model{grid-template-columns:1fr}}
+.slider{margin-bottom:13px}
+.slider label{display:flex;justify-content:space-between;font-weight:500;gap:10px}
+.slider output{font-family:"JetBrains Mono",monospace}
+.slider input{width:100%;accent-color:var(--accent)}
+.slider small{color:var(--soft)}
+.big{font:600 2.4rem Newsreader,serif;line-height:1.05}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.93rem}
+th,td{padding:7px 9px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.78rem;color:var(--soft);font-weight:600}
+.trl{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin:12px 0 6px}
+.trl div{height:30px;border-radius:4px;background:var(--chip);display:grid;place-items:center;font:600 .8rem Inter;color:var(--soft)}
+.trl div.on{background:var(--accent);color:#fff}.trl div.est{background:color-mix(in srgb,var(--accent) 45%,transparent);color:#fff}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tile{background:var(--paper);border-radius:8px;padding:10px 12px}.tile b{display:block;font:600 1.35rem Newsreader,serif}
+.dots{letter-spacing:2px;color:var(--accent)}
+.score td:nth-child(3){text-align:left;color:var(--soft);font-size:.88rem}
+svg{width:100%;height:auto;display:block}
+.axis{fill:var(--soft);font-size:11px;font-family:inherit}
+ul.tight{padding-left:20px;margin:8px 0 0}ul.tight li{margin-bottom:8px}
+ol.src{padding-left:20px;font-size:.9rem;color:var(--soft)}ol.src a{color:var(--accent)}
+.note{font-size:.88rem;color:var(--soft)}
+.foot{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);font-size:.86rem;color:var(--soft)}
+</style>
+</head>
+<body>
+<nav class="hr-bar" aria-label="Portfolio"><a href="/">&larr; Harish Gopu's portfolio</a><a href="https://github.com/harish04010/portfolio/tree/main/cases/techcomm">View the model on GitHub &rarr;</a></nav>
+<main>
+<div class="top">
+  <div>
+    <p class="kicker">Technology commercialization assessment · Energy storage · Oak Ridge National Laboratory · November 2026</p>
+    <h1>Direct recycling of battery electrodes: start with the scrap</h1>
+    <p class="lede" id="lede"></p>
+  </div>
+  <aside class="ticket" id="ticket"></aside>
+</div>
+
+<section class="grid2">
+  <div class="card"><h2>The technology</h2>
+  <p>Most lithium-ion recycling today smelts batteries or dissolves them in acid, then rebuilds cathode material from its elements. ORNL researchers patented a set of <b>direct recycling</b> methods that physically separate the electrode from its metal foil and reuse it with little retreatment [1][2].</p>
+  <p>One method peels the cathode film off the aluminum current collector intact using ethylene glycol, a common antifreeze ingredient, instead of shredding it into dusty fragments [2]. ORNL describes the process as cleaner, less energy-intensive and lower in impurities, and says the team has worked out how to scale it for industrial production [1].</p>
+  <p class="soft" style="margin:0">ORNL lists these patents as available for companies to license through its Partnerships office [1].</p></div>
+  <div class="card"><h2>Technology readiness</h2>
+  <p class="soft" style="margin:0">Assessed on the nine-level NASA/DOE scale. Solid: demonstrated per ORNL. Shaded: our estimate of where the scale-up work sits.</p>
+  <div class="trl" id="trl"></div>
+  <p class="note" style="margin:4px 0 12px">Our estimate: <b>TRL 5–6</b>. Validated in a relevant environment at ORNL's Battery Manufacturing Facility, the country's largest open-access battery R&amp;D line [1], but not yet run inside a licensee's production line.</p>
+  <h2 style="font-size:1.2rem;margin-top:14px">Two markets, very different readiness</h2>
+  <table><thead><tr><th>Market</th><th>Feedstock</th><th>Readiness</th></tr></thead><tbody>
+    <tr><td><b>Manufacturing scrap</b></td><td>Clean, known chemistry, on site</td><td style="color:var(--good)">Near-term</td></tr>
+    <tr><td>End-of-life batteries</td><td>Mixed chemistries, aged, needs collection</td><td style="color:var(--mid)">Longer-term</td></tr></tbody></table>
+  <p class="note" style="margin-top:8px">About 5% of expensive cathode material is wasted as scrap during initial production [2]. That scrap is uniform and already at the factory, so it's the obvious first market.</p></div>
+</section>
+
+<section><h2>What a license is worth: risk-adjusted NPV</h2>
+<p class="soft">The licensee view: a cell maker installs a direct-recycling line for its own cathode scrap. Value comes from cathode it doesn't have to buy again; costs are processing, the line itself, and royalties to ORNL. Cash flows are weighted by the probability the scale-up works. Every input below is an assumption you can move.</p>
+<div class="model">
+  <div class="card" id="sliders"></div>
+  <div class="card"><span class="soft">Risk-adjusted NPV to the licensee</span><div class="big" id="npv"></div><div id="npvnote"></div>
+    <div class="tiles" id="tiles"></div><svg id="cf" viewBox="0 0 520 190" style="margin-top:12px"></svg><p class="note">Bars: expected annual cash flow to the licensee after royalties. Year 0 includes the line cost and the upfront license fee.</p></div>
+</div></section>
+
+<section class="grid2">
+  <div class="card"><h2>Commercialization scorecard</h2><table class="score" id="score"></table></div>
+  <div class="card"><h2>Recommended deal structure</h2><ul class="tight">
+    <li><b>Non-exclusive, field-of-use license for manufacturing scrap.</b> Several cell makers can each use it on their own lines; no single licensee needs exclusivity to profit from its own scrap.</li>
+    <li><b>Small upfront fee, running royalty on value recovered, milestone payments</b> at first production run and at a volume threshold. This aligns ORNL's return with real deployment instead of pricing in risk up front.</li>
+    <li><b>Keep end-of-life rights separate.</b> Offer them later, possibly exclusive by region, to a recycler that can solve collection and mixed chemistries.</li>
+    <li><b>Pair with a cooperative R&amp;D agreement</b> to run the first pilot at the Battery Manufacturing Facility, moving TRL from 6 to 7 on the licensee's own material.</li></ul></div>
+</section>
+
+<section class="grid2">
+  <div class="card"><h2>Who would license it</h2><ul class="tight">
+    <li><b>Cell manufacturers</b> with new US plants: scrap from coating and slitting lines is a cost they see every day.</li>
+    <li><b>Cathode producers</b> looking to buy back customer scrap as a cheaper feedstock.</li>
+    <li><b>Recyclers</b> wanting a lower-cost route than hydrometallurgy for clean scrap streams.</li></ul></div>
+  <div class="card"><h2>Risks</h2><ul class="tight">
+    <li><b>Quality acceptance:</b> recovered cathode has to requalify for cells. If it degrades performance, the value collapses.</li>
+    <li><b>Chemistry drift:</b> manufacturers keep changing cathode formulations; a recovered material is only worth what the current recipe accepts.</li>
+    <li><b>Incumbent processes:</b> hydrometallurgical recyclers are scaling and may price scrap collection aggressively.</li>
+    <li><b>Patent scope:</b> needs a freedom-to-operate review against other direct-recycling patents before any exclusive grant.</li></ul></div>
+</section>
+
+<section><h2>Sources</h2><ol class="src">
+  <li><a href="https://www.ornl.gov/news/ornl-inventions-energize-markets-car-battery-technology/">ORNL news, "ORNL inventions energize markets for car battery technology"</a>: direct-recycling patents, Battery Manufacturing Facility, scale-up, licensing contact.</li>
+  <li><a href="https://www.ornl.gov/organization-news/ornl-inventions-energize-markets-car-battery-technology?page=0">Same article, organization news version</a>: ethylene glycol peel-off method; ~5% of cathode material wasted as production scrap.</li>
+  <li><a href="https://www.ornl.gov/technology-transfer?page=0">ORNL Technology Transfer, technologies available for licensing</a>. Licensing status can change; confirm with ORNL Partnerships before relying on availability.</li></ol>
+<p class="note">Plant size, cathode loading, cathode value, recovery yield, costs and probabilities in the valuation are the author's assumptions, chosen to be in plausible industry ranges and adjustable above. They are not ORNL figures.</p></section>
+
+<footer class="foot">A student case study built for a portfolio. Not affiliated with ORNL or UT-Battelle, and not legal, investment or licensing advice.</footer>
+</main>
+<script>
+const A = { gwh: 20, kgPerKwh: 1.6, scrap: 5, value: 18, yield: 85, proc: 4, capex: 25, royalty: 5, upfront: 1.5, pTech: 60, years: 10, rate: 12 };
+const SL = [
+  ["gwh", "Licensee plant capacity", 2, 60, 1, v => v + " GWh/yr", "A mid-size US cell plant."],
+  ["kgPerKwh", "Cathode material per kWh", 1.0, 2.5, 0.1, v => v.toFixed(1) + " kg", "Depends on chemistry."],
+  ["scrap", "Cathode lost as production scrap", 1, 10, 0.5, v => v + "%", "ORNL cites about 5% [2]."],
+  ["value", "Value of cathode material", 6, 40, 1, v => "$" + v + "/kg", "Price of buying it new."],
+  ["yield", "Recovery yield", 50, 98, 1, v => v + "%", "Share of scrap that requalifies."],
+  ["proc", "Processing cost", 1, 12, 0.5, v => "$" + v + "/kg", "Solvent, energy, labor."],
+  ["capex", "Recycling line cost", 5, 80, 1, v => "$" + v + "M", ""],
+  ["royalty", "Royalty on value recovered", 1, 12, 0.5, v => v + "%", "Paid to ORNL."],
+  ["upfront", "Upfront license fee", 0, 5, 0.25, v => "$" + v.toFixed(2) + "M", ""],
+  ["pTech", "Probability the scale-up works", 20, 95, 5, v => v + "%", "Technical and quality-qualification risk."],
+  ["rate", "Discount rate", 8, 20, 0.5, v => v + "%", "High, for an unproven process."],
+];
+const $M = v => (v < 0 ? "−" : "") + "$" + Math.abs(v).toFixed(1) + "M";
+document.getElementById("sliders").innerHTML = SL.map(([k, lab, mn, mx, st, , help]) => `<div class="slider"><label for="s-${k}"><span>${lab}</span><output id="o-${k}"></output></label><input id="s-${k}" type="range" min="${mn}" max="${mx}" step="${st}" value="${A[k]}">${help ? `<small>${help}</small>` : ""}</div>`).join("");
+SL.forEach(([k]) => document.getElementById(`s-${k}`).oninput = e => { A[k] = +e.target.value; render(); });
+
+function calc(a) {
+  const scrapKg = a.gwh * 1e6 * a.kgPerKwh * a.scrap / 100;            // GWh -> kWh x kg/kWh x scrap share
+  const recovered = scrapKg * a.yield / 100;
+  const gross = recovered * a.value / 1e6, proc = scrapKg * a.proc / 1e6, royalty = gross * a.royalty / 100;
+  const annual = gross - proc - royalty;                                  // $M per year at full run-rate
+  const ramp = [0, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1];                       // year 0 build, year 1 half
+  const p = a.pTech / 100, r = a.rate / 100;
+  const cfs = ramp.map((f, y) => y === 0 ? -(a.capex + a.upfront) : p * annual * f);
+  const npv = cfs.reduce((s, cf, y) => s + cf / (1 + r) ** y, 0);
+  const orn = ramp.reduce((s, f, y) => s + (y === 0 ? a.upfront : p * royalty * f) / (1 + r) ** y, 0);
+  let cum = 0, payback = null; cfs.forEach((cf, y) => { cum += cf; if (payback == null && cum >= 0 && y > 0) payback = y; });
+  return { scrapKg, recovered, gross, proc, royalty, annual, cfs, npv, orn, payback };
+}
+function render() {
+  SL.forEach(([k, , , , , fmt]) => document.getElementById(`o-${k}`).textContent = fmt(A[k]));
+  const c = calc(A), go = c.npv > 0 && c.payback != null && c.payback <= 5, maybe = c.npv > 0;
+  const [v, col] = go ? ["Pursue license", "var(--good)"] : maybe ? ["Pursue with a pilot first", "var(--mid)"] : ["Not at these terms", "var(--bad)"];
+  document.getElementById("npv").textContent = $M(c.npv);
+  document.getElementById("npvnote").innerHTML = `<span style="color:${col};font-weight:700">${v}</span> <span class="soft">· ${c.payback ? `expected payback in year ${c.payback}` : "no payback within 10 years"}</span>`;
+  document.getElementById("tiles").innerHTML = [["Cathode scrap per year", (c.scrapKg / 1e6).toFixed(2) + "M kg"], ["Value recovered per year", $M(c.gross)],
+    ["Net to licensee per year", $M(c.annual)], ["Risk-adjusted value to ORNL", $M(c.orn)]].map(([k, x]) => `<div class="tile"><span class="soft">${k}</span><b>${x}</b></div>`).join("");
+  const W = 520, H = 190, L = 44, R = 8, T = 12, B = 26, n = c.cfs.length, lo = Math.min(0, ...c.cfs) * 1.1, hi = Math.max(1, ...c.cfs) * 1.15;
+  const x = i => L + (W - L - R) * (i + .5) / n, y = val => T + (H - T - B) * (1 - (val - lo) / (hi - lo)), bw = (W - L - R) / n * .6;
+  let o = `<line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}" stroke="var(--soft)"/>` + [lo, hi / 1.15].map(val => `<text class="axis" x="${L - 6}" y="${y(val) + 4}" text-anchor="end">${$M(val)}</text>`).join("");
+  c.cfs.forEach((cf, i) => o += `<rect x="${x(i) - bw / 2}" y="${Math.min(y(cf), y(0))}" width="${bw}" height="${Math.abs(y(cf) - y(0))}" fill="${cf >= 0 ? "var(--accent)" : "var(--bad)"}" rx="2"/><text class="axis" x="${x(i)}" y="${H - 8}" text-anchor="middle">${i}</text>`);
+  document.getElementById("cf").innerHTML = o;
+  const s = [["Technical readiness", 3, "TRL 5–6: demonstrated at ORNL, not yet in a licensee's line."],
+    ["Market pull", 4, "Every cell plant has cathode scrap, and it's expensive material."],
+    ["Economics", c.npv > 20 ? 5 : c.npv > 0 ? 4 : 2, `${$M(c.npv)} risk-adjusted NPV to a ${A.gwh} GWh licensee.`],
+    ["IP position", 3, "Patented, but needs a freedom-to-operate review against other direct-recycling patents."],
+    ["Path to adoption", 4, "Fits existing factories; no new feedstock logistics for the scrap market."]];
+  document.getElementById("score").innerHTML = `<thead><tr><th>Dimension</th><th>Score</th><th>Why</th></tr></thead><tbody>` +
+    s.map(([k, n, w]) => `<tr><td>${k}</td><td class="dots">${"●".repeat(n) + "○".repeat(5 - n)}</td><td>${w}</td></tr>`).join("") + "</tbody>";
+  document.getElementById("ticket").innerHTML = `<span class="badge" style="background:${col}">${v.toUpperCase()}</span>
+    <div class="row" style="margin-top:12px"><span>First market</span><b>Manufacturing scrap</b></div>
+    <div class="row"><span>Readiness (our estimate)</span><b>TRL 5–6</b></div>
+    <div class="row"><span>Licensee NPV, risk-adjusted</span><b>${$M(c.npv)}</b></div>
+    <div class="row"><span>Value to ORNL per licensee</span><b>${$M(c.orn)}</b></div>
+    <div class="row"><span>Suggested structure</span><b>Non-exclusive, field of use</b></div>`;
+  document.getElementById("lede").innerHTML = `<b>${v}.</b> The strongest near-term market isn't end-of-life batteries, where collection and mixed chemistries make recycling hard. It's the cathode scrap cell factories throw away every day: about 5% of production, clean and already on site. At our base assumptions, a ${A.gwh} GWh plant recovers ${$M(c.gross)} of cathode a year, and a license is worth <b>${$M(c.npv)}</b> to it after royalties and a ${A.pTech}% chance the scale-up works. We recommend non-exclusive, field-of-use licenses for scrap, priced on royalties and milestones, with end-of-life rights held back for a later, separate deal.`;
+}
+render();
+document.getElementById("trl").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<div class="${n <= 5 ? "on" : n === 6 ? "est" : ""}">${n}</div>`).join("");
+</script>
+</body>
+</html>

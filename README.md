@@ -14,7 +14,7 @@ Eleven end-to-end projects, grouped by the role they're most relevant to. Each h
 | Analytics & BI | [Ridgeline Analytics](https://github.com/harish04010/ridgeline-analytics) · [Retention Targeting](https://github.com/harish04010/retention-targeting) · [Card Fraud Detection](https://github.com/harish04010/card-fraud-detection) · [FP&A Operating Plan](https://github.com/harish04010/fpa-operating-plan) |
 | Finance, Treasury & FP&A | [Treasury Reconciliation](https://github.com/harish04010/treasury-recon) · [FP&A Operating Plan](https://github.com/harish04010/fpa-operating-plan) · [Credit Risk Scorecard](https://github.com/harish04010/credit-risk-scorecard) |
 | Software & Systems | [Haulroute](https://github.com/harish04010/haulroute) · [Waybill](https://github.com/harish04010/waybill) · [Market Data Lakehouse](https://github.com/harish04010/market-data-lakehouse) |
-| Investment & Ventures | [Academy Sports (ASO) equity research](https://harish04010-portfolio.vercel.app/cases/aso/) ([model](cases/aso/index.html)) · venture memo and tech commercialization cases in progress |
+| Investment & Ventures | [Academy Sports (ASO) equity research](https://harish04010-portfolio.vercel.app/cases/aso/) · [Seed memo: AI agents for freight brokers](https://harish04010-portfolio.vercel.app/cases/venture/) · [Tech commercialization: ORNL battery recycling](https://harish04010-portfolio.vercel.app/cases/techcomm/) |
 
 ## Editing
 
