@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Academy Sports + Outdoors (ASO): equity research initiation</title>
+<meta name="description" content="An equity research initiation on Academy Sports + Outdoors with an interactive DCF, built from the company's SEC filings.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f5f1;--surface:#fff;--ink:#16191d;--soft:#5d636c;--rule:#e1dfd8;--accent:#0b4f6c;--buy:#2b7a50;--hold:#b07a12;--sell:#b0383a;--chip:#efede7;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--paper:#121418;--surface:#1a1d22;--ink:#eceef1;--soft:#a1a8b2;--rule:#2b3038;--accent:#7cc0de;--buy:#5fc28c;--hold:#e2b24d;--sell:#ec7d7f;--chip:#23272e;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,"Helvetica Neue",Arial,sans-serif}
+.hr-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px clamp(14px,3vw,32px);font:500 13px/1.4 -apple-system,"Segoe UI",Inter,Arial,sans-serif;background:#f1f2f4;color:#3b4250;border-bottom:1px solid #dfe2e7}
+.hr-bar a{color:inherit;text-decoration:none}.hr-bar a:hover{text-decoration:underline}
+@media (prefers-color-scheme:dark){.hr-bar{background:#171b21;color:#b4bcc8;border-bottom-color:#2a313b}}
+main{max-width:1120px;margin:0 auto;padding:36px clamp(16px,3vw,36px) 64px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;margin:4px 0 10px}
+h2{font-size:1.6rem;margin:0 0 8px}
+.soft{color:var(--soft)}.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.kicker{font-weight:600;color:var(--soft);font-size:.9rem;margin:0}
+.top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:28px;align-items:start}
+@media (max-width:880px){.top{grid-template-columns:1fr}}
+.thesis{font-size:1.1rem;max-width:68ch}
+.ticket{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px}
+.rating{display:inline-block;font:700 1rem Inter;letter-spacing:.06em;padding:6px 14px;border-radius:6px;color:#fff}
+.ticket .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule)}
+.ticket .row:last-child{border-bottom:0}.ticket .row b{font-family:"JetBrains Mono",monospace}
+section{margin-top:48px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px}
+.kpi b{display:block;font:600 1.5rem Newsreader,serif}.kpi span{color:var(--soft);font-size:.86rem}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:880px){.grid2{grid-template-columns:1fr}}
+.model{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.9fr);gap:20px}
+@media (max-width:880px){.model{grid-template-columns:1fr}}
+.presets{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.presets button{font:inherit;font-weight:600;padding:6px 14px;border-radius:999px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+.presets button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.slider{margin-bottom:14px}
+.slider label{display:flex;justify-content:space-between;font-weight:500;gap:10px}
+.slider output{font-family:"JetBrains Mono",monospace}
+.slider input{width:100%;accent-color:var(--accent)}
+.slider small{color:var(--soft)}
+.out .big{font:600 2.8rem Newsreader,serif;line-height:1}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.93rem}
+th,td{padding:7px 9px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.78rem;color:var(--soft);font-weight:600}
+td.hot{outline:2px solid var(--ink);outline-offset:-2px;font-weight:700}
+svg{width:100%;height:auto;display:block}
+.axis{fill:var(--soft);font-size:11px;font-family:inherit}
+.debate{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.debate{grid-template-columns:1fr}}
+.debate ul{margin:8px 0 0;padding-left:20px}.debate li{margin-bottom:8px}
+.debate .bull{border-top:4px solid var(--buy)}.debate .bear{border-top:4px solid var(--sell)}
+ol.src{padding-left:20px;font-size:.9rem;color:var(--soft)}ol.src a{color:var(--accent)}
+.note{font-size:.88rem;color:var(--soft)}
+.foot{margin-top:56px;padding-top:14px;border-top:1px solid var(--rule);font-size:.86rem;color:var(--soft)}
+</style>
+</head>
+<body>
+<nav class="hr-bar" aria-label="Portfolio"><a href="/">&larr; Harish Gopu's portfolio</a><a href="https://github.com/harish04010/portfolio/tree/main/cases/aso">View the model on GitHub &rarr;</a></nav>
+<main>
+<div class="top">
+  <div>
+    <p class="kicker">Equity research · Initiation · Specialty retail · Nasdaq: ASO · Data as of November 5, 2026</p>
+    <h1>Academy Sports + Outdoors: priced for the stores, not for the comps</h1>
+    <p class="thesis" id="thesis"></p>
+  </div>
+  <aside class="ticket" id="ticket"></aside>
+</div>
+
+<section><h2>The business in numbers</h2><div class="kpis" id="kpis"></div>
+<p class="note">Fiscal 2025 ended January 31, 2026. Sources are numbered at the bottom of the page.</p></section>
+
+<section class="grid2">
+  <div class="card"><h2>Growth is coming from new stores</h2><p class="soft" style="margin:0 0 8px">Quarterly comparable sales (stores open 13+ months plus eCommerce) versus total sales growth.</p><svg id="comps" viewBox="0 0 520 250"></svg>
+  <p class="note">Total sales have grown every quarter while comparable sales were negative in four of six. The gap is new stores: 24 opened in fiscal 2025 and 22–24 planned for 2026.</p></div>
+  <div class="card"><h2>Where the money goes</h2><table id="alloc"></table>
+  <p class="note" style="margin-top:10px">Buybacks retired about 5% of the share count in fiscal 2025 (68.3M → 64.9M shares), on top of ~$213M of store and digital capex.</p></div>
+</section>
+
+<section><h2>Valuation: discounted cash flow</h2>
+<p class="soft">Five-year forecast of unlevered free cash flow, discounted at the cost of capital, plus a terminal value. Leases are treated as an operating cost (rent sits inside the margin), so only the term loan counts as debt. Move the assumptions; the rating updates.</p>
+<div class="model">
+  <div class="card"><div class="presets" id="presets"></div><div id="sliders"></div></div>
+  <div class="card out"><span class="soft">Implied value per share</span><div class="big" id="value"></div><div id="vs"></div>
+    <div class="scroll" style="margin-top:14px"><table id="proj"></table></div></div>
+</div>
+<div class="grid2" style="margin-top:20px">
+  <div class="card"><h2>Sensitivity</h2><p class="soft" style="margin:0 0 8px">Value per share by discount rate (rows) and terminal growth (columns), other assumptions as set above. Outlined: the current setting.</p><div class="scroll"><table id="sens"></table></div></div>
+  <div class="card"><h2>Cross-check: earnings multiple</h2><div id="pe"></div></div>
+</div></section>
+
+<section><h2>The debate</h2><div class="debate">
+  <div class="card bull"><h2>What a bull has to believe</h2><ul>
+    <li><b>Comps turn sustainably positive.</b> Q1 2026 comped +2.9% on traffic and ticket; eCommerce grew 12.8% in Q2 and 22.2% in Q3 2025.</li>
+    <li><b>New stores keep paying.</b> They comped high single digits in Q3 2025 and positive mid single digits in Q2 2026, and the footprint is still 21 states.</li>
+    <li><b>Capital returns compound.</b> Roughly $263M of free cash flow a year, a net-debt-light balance sheet, and $437M left on the buyback authorization at fiscal year end.</li></ul></div>
+  <div class="card bear"><h2>What a bear points to</h2><ul>
+    <li><b>Comps keep slipping.</b> Q2 2026 was −0.4% after +2.9% in Q1; four of the last six quarters were negative.</li>
+    <li><b>Margin flattered by one-offs.</b> Q2 2026 gross margin of 40.4% included tariff refunds, much of it reinvested below the line, and full-year net income guidance was left unchanged.</li>
+    <li><b>The core customer is stretched.</b> Management repeatedly flags pressure on lower-income households, and the stock is up about 60% from its 52-week low.</li></ul></div>
+</div></section>
+
+<section class="grid2">
+  <div class="card"><h2>Catalysts to watch</h2><ul style="padding-left:20px;margin:6px 0 0">
+    <li><b>Q3 2026 results (early December):</b> whether comps hold near the guided back-half ~+1%, and early holiday trends.</li>
+    <li><b>Fiscal 2027 guidance (March 2027):</b> the store-opening cadence and whether margin guidance holds without tariff refunds.</li>
+    <li><b>Buyback pace:</b> with the stock at a 52-week high, slower repurchases would be a signal on how management sees value.</li></ul></div>
+  <div class="card"><h2>Risks to the call</h2><ul style="padding-left:20px;margin:6px 0 0">
+    <li><b>Upside:</b> a consumer rebound. In this model, +1pt of comps on its own adds only about $1.70 per share; the value is in what comps do to margin. Spreading rent and payroll over more sales is where the money is: each +0.5pt of operating margin adds about $5.70.</li>
+    <li><b>Downside:</b> new-store productivity fades as the chain moves into markets with less brand awareness, or tariffs return without offsetting price.</li>
+    <li><b>Model risk:</b> about 70% of the value sits in the terminal value, so the discount rate dominates. See the sensitivity table.</li></ul></div>
+</section>
+
+<section><h2>Sources</h2><ol class="src">
+  <li><a href="https://www.sec.gov/Archives/edgar/data/1817358/000181735826000026/exhibit991pressreleaseye25.htm">Fourth quarter and fiscal 2025 results, Form 8-K Exhibit 99.1</a>, March 17, 2026: income statement, balance sheet, cash flow, stores, fiscal 2026 guidance.</li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/0001817358/000181735826000146/exhibit991pressreleaseq220.htm">Second quarter fiscal 2026 results, Form 8-K Exhibit 99.1</a>, September 9, 2026.</li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/0001817358/000181735826000105/exhibit991pressreleaseq120.htm">First quarter fiscal 2026 results, Form 8-K Exhibit 99.1</a>, June 9, 2026.</li>
+  <li><a href="https://www.sec.gov/Archives/edgar/data/1817358/000181735825000189/exhibit991pressreleaseq320.htm">Third quarter fiscal 2025 results, Form 8-K Exhibit 99.1</a>, December 9, 2025.</li>
+  <li>Share price ($67.69 close, November 4, 2026), 52-week range and shares outstanding (61.58M): public market data (Robinhood, Morningstar quote pages).</li></ol></section>
+
+<footer class="foot">A student case study built for a portfolio, not investment advice. Forecast assumptions are the author's; reported figures come from the company's SEC filings as cited. The model is the JavaScript on this page; nothing is hidden.</footer>
+</main>
+<script>
+// ---------------------------------------------------------------- reported data (sources above)
+const R = {
+  price: 67.69, priceDate: "Nov 4, 2026", shares: 61.58, low52: 41.29, high52: 67.76,
+  fy25: { sales: 6053.4, gm: 0.348, ebit: 512.2, ni: 376.8, adjEps: 5.78, da: 122.9, capex: 212.7, cfo: 434.8, fcf: 262.8,
+          cash: 330.3, debt: 483.8, buyback: 200.8, dividends: 34.7, stores: 322, sharesYE: 64.95, sharesPY: 68.33 },
+  fy26guide: { salesLo: 6230, salesHi: 6355, epsLo: 6.50, epsHi: 6.90, stores: "22–24" },
+  comps: [["Q1 FY25", -3.7, 0.9], ["Q2 FY25", 0.2, 3.3], ["Q3 FY25", -0.9, 3.0], ["Q4 FY25", -1.6, 2.5], ["Q1 FY26", 2.9, 6.7], ["Q2 FY26", -0.4, 3.0]],
+};
+// Calibration: FY2025 sales grew 2.0% with comps of -1.5%, so 24 new stores added ~3.5% of sales:
+// 0.035 x 5,933 / 24 = ~$8.7M each in their opening year (openings are spread through the year).
+const PER_NEW_STORE = 8.7;
+const FIXED = { tax: 0.225, da: 0.0203, nwc: 0.10, fy26Margin: 0.087 };
+
+const DEF = { comps: 1.0, stores: 22, margin: 8.8, capex: 3.5, wacc: 10.0, tg: 2.5 };
+const PRESETS = { Bear: { comps: -1.0, stores: 18, margin: 7.8, capex: 3.7, wacc: 10.5, tg: 2.0 },
+                  Base: { ...DEF }, Bull: { comps: 3.0, stores: 25, margin: 9.8, capex: 3.4, wacc: 9.5, tg: 3.0 } };
+const SL = [
+  ["comps", "Comparable sales, FY27–31", -3, 5, 0.25, v => (v >= 0 ? "+" : "") + v.toFixed(2) + "%", "Guidance implies about +1% for 2026."],
+  ["stores", "New stores per year", 10, 30, 1, v => v.toFixed(0), `Each adds ~$${PER_NEW_STORE}M in its opening year (calibrated to fiscal 2025).`],
+  ["margin", "Operating margin, FY27–31", 6.5, 11, 0.1, v => v.toFixed(1) + "%", "FY25 was 8.5%; FY26 guidance implies about 8.7%."],
+  ["capex", "Capex, % of sales", 2.5, 5, 0.1, v => v.toFixed(1) + "%", "FY25: 3.5% ($213M)."],
+  ["wacc", "Discount rate (WACC)", 8, 12, 0.25, v => v.toFixed(2) + "%", "Cost of equity for a ~1.0 beta retailer, little debt."],
+  ["tg", "Terminal growth", 1, 3.5, 0.25, v => v.toFixed(2) + "%", "Long-run nominal growth after FY31."],
+];
+let A = { ...DEF }, preset = "Base";
+
+function model(a) {
+  const yrs = [], prior = [R.fy25.sales];
+  let s = R.fy25.sales;
+  for (let i = 0; i < 6; i++) {               // FY26 (guidance) + FY27-FY31
+    const growth = i === 0 ? 0.04 : a.comps / 100 + a.stores * PER_NEW_STORE / s;
+    const ns = s * (1 + growth), m = i === 0 ? FIXED.fy26Margin : a.margin / 100;
+    const ebit = ns * m, nopat = ebit * (1 - FIXED.tax);
+    const fcf = nopat + ns * FIXED.da - ns * a.capex / 100 - (ns - s) * FIXED.nwc;
+    yrs.push({ fy: 2026 + i, sales: ns, growth, ebit, fcf }); s = ns;
+  }
+  // Value as of today: discount FY27-FY31 (FY26 is mostly elapsed; its cash is close to the balance sheet already).
+  const w = a.wacc / 100, g = a.tg / 100, f = yrs.slice(1);
+  let pv = 0; f.forEach((y, i) => pv += y.fcf / (1 + w) ** (i + 1));
+  const tv = f.at(-1).fcf * (1 + g) / (w - g), pvtv = tv / (1 + w) ** f.length;
+  const ev = pv + pvtv, eq = ev - (R.fy25.debt - R.fy25.cash);
+  return { yrs, ev, eq, perShare: eq / R.shares, tvShare: pvtv / ev };
+}
+const rating = v => { const up = v / R.price - 1; return up > 0.15 ? ["BUY", "var(--buy)"] : up < -0.10 ? ["SELL", "var(--sell)"] : ["HOLD", "var(--hold)"]; };
+const $ = v => "$" + v.toFixed(2), M = v => "$" + Math.round(v).toLocaleString() + "M", pct = (v, d = 1) => (v * 100).toFixed(d) + "%";
+
+document.getElementById("presets").innerHTML = Object.keys(PRESETS).map(k => `<button data-k="${k}">${k}</button>`).join("");
+document.querySelectorAll("#presets button").forEach(b => b.onclick = () => { A = { ...PRESETS[b.dataset.k] }; preset = b.dataset.k; sync(); render(); });
+document.getElementById("sliders").innerHTML = SL.map(([k, lab, mn, mx, st, , help]) => `<div class="slider"><label for="s-${k}"><span>${lab}</span><output id="o-${k}"></output></label><input id="s-${k}" type="range" min="${mn}" max="${mx}" step="${st}"><small>${help}</small></div>`).join("");
+SL.forEach(([k]) => document.getElementById(`s-${k}`).oninput = e => { A[k] = +e.target.value; preset = null; render(); });
+const sync = () => SL.forEach(([k]) => document.getElementById(`s-${k}`).value = A[k]);
+
+function render() {
+  SL.forEach(([k, , , , , fmt]) => document.getElementById(`o-${k}`).textContent = fmt(A[k]));
+  document.querySelectorAll("#presets button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === preset));
+  const m = model(A), v = m.perShare, up = v / R.price - 1, [r, col] = rating(v);
+  document.getElementById("value").textContent = $(v);
+  document.getElementById("vs").innerHTML = `<span style="color:${col};font-weight:700">${r}</span> <span class="soft">· ${up >= 0 ? "+" : ""}${pct(up)} vs $${R.price} · terminal value ${pct(m.tvShare, 0)} of EV</span>`;
+  document.getElementById("proj").innerHTML = `<thead><tr><th>$M</th>${m.yrs.map(y => `<th>FY${String(y.fy).slice(2)}</th>`).join("")}</tr></thead><tbody>
+    <tr><td>Sales</td>${m.yrs.map(y => `<td>${Math.round(y.sales).toLocaleString()}</td>`).join("")}</tr>
+    <tr><td>Growth</td>${m.yrs.map(y => `<td>${pct(y.growth)}</td>`).join("")}</tr>
+    <tr><td>EBIT</td>${m.yrs.map(y => `<td>${Math.round(y.ebit)}</td>`).join("")}</tr>
+    <tr><td>Free cash flow</td>${m.yrs.map(y => `<td>${Math.round(y.fcf)}</td>`).join("")}</tr></tbody>`;
+  const ws = [-1, -0.5, 0, 0.5, 1].map(d => A.wacc + d), ts = [-0.5, 0, 0.5].map(d => A.tg + d);
+  document.getElementById("sens").innerHTML = `<thead><tr><th>WACC \\ g</th>${ts.map(t => `<th>${t.toFixed(2)}%</th>`).join("")}</tr></thead><tbody>` +
+    ws.map(w => `<tr><td>${w.toFixed(2)}%</td>${ts.map(t => { const x = model({ ...A, wacc: w, tg: t }).perShare, c = rating(x)[1];
+      return `<td class="${w === A.wacc && t === A.tg ? "hot" : ""}" style="color:${c}">${$(x)}</td>`; }).join("")}</tr>`).join("") + "</tbody>";
+  const eps = (R.fy26guide.epsLo + R.fy26guide.epsHi) / 2;
+  document.getElementById("pe").innerHTML = `<p style="margin:0 0 8px">At $${R.price}, ASO trades at <b>${(R.price / eps).toFixed(1)}×</b> the midpoint of fiscal 2026 adjusted EPS guidance ($${R.fy26guide.epsLo.toFixed(2)}–$${R.fy26guide.epsHi.toFixed(2)}).</p>
+    <p class="soft" style="margin:0 0 8px">The DCF value of ${$(v)} implies <b>${(v / eps).toFixed(1)}×</b>. For a retailer with low-single-digit growth, a high-single-digit free cash flow yield (${pct(R.fy25.fcf / (R.price * R.shares))} on fiscal 2025 adjusted free cash flow) and shrinking share count, a 9–11× range is the usual debate. The two methods agree that the stock sits near fair value.</p>`;
+  const t = model(DEF).perShare, [rt, ct] = rating(t);
+  document.getElementById("ticket").innerHTML = `<span class="rating" style="background:${ct}">${rt}</span>
+    <div class="row" style="margin-top:12px"><span>Price (${R.priceDate})</span><b>$${R.price}</b></div>
+    <div class="row"><span>Base-case target</span><b>${$(t)}</b></div>
+    <div class="row"><span>Implied upside</span><b>${pct(t / R.price - 1)}</b></div>
+    <div class="row"><span>52-week range</span><b>$${R.low52}–${R.high52}</b></div>
+    <div class="row"><span>Market cap</span><b>${M(R.price * R.shares)}</b></div>
+    <div class="row"><span>FY26 adj. EPS guide</span><b>$${R.fy26guide.epsLo.toFixed(2)}–${R.fy26guide.epsHi.toFixed(2)}</b></div>`;
+  document.getElementById("thesis").innerHTML = `We initiate at <b>${rt}</b> with a base-case value of <b>${$(t)}</b>, ${pct(Math.abs(t / R.price - 1))} ${t >= R.price ? "above" : "below"} the current price. Academy is executing well where it controls the outcome: new stores comp positive, eCommerce grows double digits, and free cash flow funds both growth and a shrinking share count. But comparable sales have been negative in four of the last six quarters, and after a ~60% run from the 52-week low the stock already prices in steady store growth with roughly flat comps. Upside from here needs evidence that comps recover; we'd revisit on sustained positive comps or a pullback toward the low $50s.`;
+}
+sync(); render();
+
+const f = R.fy25;
+document.getElementById("kpis").innerHTML = [
+  [M(f.sales), "FY25 net sales, +2.0%"], [pct(f.gm), "gross margin"], [pct(f.ebit / f.sales), "operating margin"],
+  [M(f.fcf), "adjusted free cash flow"], [String(f.stores), "stores in 21 states"], ["$" + f.adjEps.toFixed(2), "FY25 adjusted EPS"],
+].map(([b, s]) => `<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join("");
+document.getElementById("alloc").innerHTML = `<thead><tr><th>Fiscal 2025</th><th>$M</th><th>% of CFO</th></tr></thead><tbody>` +
+  [["Cash from operations", f.cfo], ["Capital expenditures", f.capex], ["Share repurchases", f.buyback], ["Dividends", f.dividends]]
+    .map(([k, v]) => `<tr><td>${k}</td><td>${v.toFixed(1)}</td><td>${pct(v / f.cfo, 0)}</td></tr>`).join("") +
+  `<tr><td>Cash / term debt at year end</td><td>${f.cash.toFixed(0)} / ${f.debt.toFixed(0)}</td><td></td></tr></tbody>`;
+(() => { const W = 520, H = 250, L = 36, Rr = 8, T = 14, B = 34, n = R.comps.length, lo = -5, hi = 8;
+  const x = i => L + (W - L - Rr) * (i + .5) / n, y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo)), bw = (W - L - Rr) / n * .3;
+  let o = [-4, 0, 4, 8].map(v => `<line x1="${L}" x2="${W - Rr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" ${v === 0 ? 'stroke-width="2"' : ""}/><text class="axis" x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("");
+  R.comps.forEach(([q, c, s], i) => {
+    o += `<rect x="${x(i) - bw - 2}" y="${Math.min(y(c), y(0))}" width="${bw}" height="${Math.abs(y(c) - y(0))}" fill="${c >= 0 ? "var(--buy)" : "var(--sell)"}"><title>${q} comps ${c}%</title></rect>`;
+    o += `<rect x="${x(i) + 2}" y="${y(s)}" width="${bw}" height="${y(0) - y(s)}" fill="var(--accent)" opacity=".75"><title>${q} total sales +${s}%</title></rect>`;
+    o += `<text class="axis" x="${x(i)}" y="${H - 14}" text-anchor="middle">${q}</text>`; });
+  o += `<text class="axis" x="${L + 4}" y="${T + 10}"><tspan style="fill:var(--sell)">■</tspan> comparable sales  <tspan style="fill:var(--accent)">■</tspan> total sales growth</text>`;
+  document.getElementById("comps").innerHTML = o; })();
+</script>
+</body>
+</html>

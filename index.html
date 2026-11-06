@@ -83,11 +83,11 @@ footer a{color:inherit}
 <script>
 // ---- Edit these -------------------------------------------------------------
 const ME = {
-  name: "Harish",
+  name: "Harish Gopu",
   tagline: "I build data and AI systems end to end, from messy source data to tested pipelines, models, and decision tools people can actually use. Projects below are grouped by the role they're most relevant to.",
   github: "https://github.com/harish04010",
-  linkedin: "",   // e.g. "https://www.linkedin.com/in/your-handle"
-  email: "",      // e.g. "you@example.com"
+  email: "vgopu@vols.utk.edu",
+  phone: "512-785-2898",
   resume: "",     // e.g. a link to a PDF
 };
 // -----------------------------------------------------------------------------
@@ -132,6 +132,10 @@ const P = {
     what: "A month-end close for a 40-store retailer: POS, card processors and bank matched three ways, with Oracle-format journal entries.",
     result: "Found $36K of processor overbilling and a missing deposit; every clearing account ties to $0.00.",
     tags: ["Excel (1,178 formulas)", "Python", "Reconciliation", "Oracle GL"] },
+  aso: { title: "Academy Sports (ASO): equity research", img: "aso", live: "/cases/aso/", repoPath: "portfolio/tree/main/cases/aso",
+    what: "An initiation on a $4B sporting goods retailer: interactive DCF, sensitivity, earnings cross-check, bull and bear debate, catalysts and risks.",
+    result: "Hold, base-case value about $71 vs $67.69. The stock prices in store growth with flat comps; margin, not sales, is the lever.",
+    tags: ["Valuation", "DCF", "SEC filings", "Equity research"] },
   fpa: { title: "FP&A Operating Plan", img: "fpa", live: "https://fpa-operating-plan.vercel.app", repo: "fpa-operating-plan",
     what: "A driver-based plan for a $5B retailer: budget vs actual, price/volume/mix bridges, an 8+4 forecast and scenarios.",
     result: "Revenue beat plan; margin didn't. Freight, overtime and marketing ate most of the price gain.",
@@ -144,7 +148,7 @@ const ROLES = [
   { id: "analytics", name: "Analytics & BI", blurb: "From raw tables to answers a business can act on, with the cleaning and the caveats shown, not hidden.", items: ["ridgeline", "retention", "fraud", "fpa"] },
   { id: "finance", name: "Finance, Treasury & FP&A", blurb: "Close, reconcile, plan and explain. Built in Excel the way finance teams build, with a web view on top.", items: ["treasury", "fpa", "credit"] },
   { id: "software", name: "Software & Systems", blurb: "Performance, correctness and clean architecture: compiled code, typed front ends and services with tests.", items: ["haulroute", "waybill", "lakehouse"] },
-  { id: "ventures", name: "Investment & Ventures", blurb: "Equity research, venture evaluation and technology commercialization cases.", items: [], soon: "In progress: an equity research initiation with an interactive DCF, a venture memo with bottom-up market sizing, and a technology commercialization assessment." },
+  { id: "ventures", name: "Investment & Ventures", blurb: "Equity research, venture evaluation and technology commercialization cases, built from primary sources and cited.", items: ["aso", "lakehouse", "credit"], soon: "Next: a venture memo with bottom-up market sizing, and a technology commercialization assessment." },
 ];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 document.getElementById("name").textContent = ME.name;
@@ -152,21 +156,21 @@ document.getElementById("tagline").textContent = ME.tagline;
 document.title = `${ME.name} · Portfolio`;
 document.getElementById("links").innerHTML = [
   ME.github && `<a class="btn primary" href="${ME.github}">GitHub</a>`,
-  ME.linkedin && `<a class="btn" href="${ME.linkedin}">LinkedIn</a>`,
   ME.resume && `<a class="btn" href="${ME.resume}">Résumé</a>`,
-  ME.email && `<a class="btn" href="mailto:${ME.email}">Email</a>`,
+  ME.email && `<a class="btn" href="mailto:${ME.email}">${ME.email}</a>`,
+  ME.phone && `<a class="btn" href="tel:+1${ME.phone.replace(/\D/g, "")}">${ME.phone}</a>`,
 ].filter(Boolean).join("");
 document.getElementById("stats").innerHTML = [
-  [Object.keys(P).length, "projects, each live"], [ROLES.filter(r => r.items.length).length, "role areas"],
+  [Object.keys(P).length - 1, "projects + 1 research case"], [ROLES.filter(r => r.items.length).length, "role areas"],
   ["Python · SQL", "plus C++, TypeScript, R"], ["Excel · Power BI", "for the finance work"],
 ].map(([b, s]) => `<div><b class="${typeof b === "number" ? "" : "text"}">${b}</b><span>${s}</span></div>`).join("");
 document.getElementById("nav").innerHTML = ROLES.map(r => `<a href="#${r.id}">${r.name}</a>`).join("");
 const card = k => { const p = P[k]; return `<article class="card"><a class="shot" href="${p.live}" aria-label="${esc(p.title)} live demo"><img src="img/${p.img}.webp" alt="Screenshot of ${esc(p.title)}" loading="lazy" width="720" height="450"></a>
   <div class="body"><h3>${esc(p.title)}</h3><p class="what">${esc(p.what)}</p><p class="result">${esc(p.result)}</p>
   <div class="tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
-  <div class="actions"><a class="live" href="${p.live}">Live demo</a><a href="https://github.com/harish04010/${p.repo}">Code</a></div></div></article>`; };
+  <div class="actions"><a class="live" href="${p.live}">${p.repoPath ? "Read the case" : "Live demo"}</a><a href="https://github.com/harish04010/${p.repoPath || p.repo}">${p.repoPath ? "Model" : "Code"}</a></div></div></article>`; };
 document.getElementById("sections").innerHTML = ROLES.map(r => `<section class="role" id="${r.id}"><header><h2>${r.name}</h2>${r.items.length ? `<span class="count">${r.items.length} projects</span>` : ""}</header>
-  <p class="blurb">${r.blurb}</p>${r.items.length ? `<div class="grid">${r.items.map(card).join("")}</div>` : `<div class="soon"><b>Coming soon.</b> ${r.soon}</div>`}</section>`).join("");
+  <p class="blurb">${r.blurb}</p>${r.items.length ? `<div class="grid">${r.items.map(card).join("")}</div>` : ""}${r.soon ? `<div class="soon" style="margin-top:${r.items.length ? 18 : 0}px"><b>Coming soon.</b> ${r.soon}</div>` : ""}</section>`).join("");
 document.getElementById("foot").innerHTML = `© ${new Date().getFullYear()} ${esc(ME.name)} · <a href="${ME.github}">github.com/harish04010</a>`;
 </script>
 </body>
