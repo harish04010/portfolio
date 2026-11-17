@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Harish · Portfolio: AI, data, and finance projects</title>
-<meta name="description" content="Eleven end-to-end projects across AI engineering, data engineering, data science, analytics, finance and systems, each with a live demo and tested code.">
+<meta name="description" content="Fifteen end-to-end projects across AI engineering, data engineering, data science, analytics, finance and systems, each with a live demo and tested code.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -132,6 +132,10 @@ const P = {
     what: "A month-end close for a 40-store retailer: POS, card processors and bank matched three ways, with Oracle-format journal entries.",
     result: "Found $36K of processor overbilling and a missing deposit; every clearing account ties to $0.00.",
     tags: ["Excel (1,178 formulas)", "Python", "Reconciliation", "Oracle GL"] },
+  shelf: { title: "Shelf Conflation Engine", img: "shelf", live: "https://shelf-conflation-engine.vercel.app", repo: "shelf-conflation-engine",
+    what: "Resolves noisy shelf-camera detections from three store passes to a product catalog, one versioned golden record per shelf slot: rules first, spatial agreement second, an LLM only for the residue.",
+    result: "99.8% of automatic matches correct and 95% resolved without an LLM, about 45× cheaper than sending every detection to one; v1 got 72%.",
+    tags: ["Entity resolution", "Python", "RapidFuzz", "Spatial clustering", "Hybrid AI", "Versioned pipelines"] },
   supplychain: { title: "Supply Chain Data Platform", img: "supplychain", live: "https://supply-chain-data-platform-one.vercel.app", repo: "supply-chain-data-platform",
     what: "Purchase orders, ship notices, DC receipts, store shipments, sales and a million-event inventory stream, modeled in dbt into a star schema and governed metrics.",
     result: "Reconciliation caught a doubled snapshot load; a late vendor shows up at the DC before the shelf; validation caught a double count in a metric definition.",
@@ -162,10 +166,10 @@ const P = {
     tags: ["Excel (1,434 formulas)", "Power BI kit", "DAX", "Forecasting"] },
 };
 const ROLES = [
-  { id: "ai", name: "AI Engineering", blurb: "Agents, retrieval, evaluation and serving: systems where a model is one part and the guardrails around it matter as much.", items: ["waybill", "jetway", "lanebench"] },
-  { id: "data-engineering", name: "Data Engineering", blurb: "Pipelines that are incremental, idempotent and tested, with contracts that keep bad data out of the tables people query.", items: ["supplychain", "lakehouse", "ridgeline"] },
+  { id: "ai", name: "AI Engineering", blurb: "Agents, retrieval, evaluation and serving: systems where a model is one part and the guardrails around it matter as much.", items: ["waybill", "jetway", "shelf", "lanebench"] },
+  { id: "data-engineering", name: "Data Engineering", blurb: "Pipelines that are incremental, idempotent and tested, with contracts that keep bad data out of the tables people query.", items: ["shelf", "supplychain", "lakehouse", "ridgeline"] },
   { id: "data-science", name: "Data Science & ML", blurb: "Models judged by the decision they drive, validated on later or held-out data, with fairness and calibration checked.", items: ["credit", "fraud", "demand", "retention", "jetway"] },
-  { id: "supply-chain", name: "Supply Chain & Operations", blurb: "Inventory, vendors, freight and routing: the data and decisions that keep product moving from suppliers to shelves.", items: ["supplychain", "demand", "purchasing", "waybill", "haulroute", "lanebench"] },
+  { id: "supply-chain", name: "Supply Chain & Operations", blurb: "Inventory, vendors, freight and routing: the data and decisions that keep product moving from suppliers to shelves.", items: ["supplychain", "shelf", "demand", "purchasing", "waybill", "haulroute", "lanebench"] },
   { id: "analytics", name: "Analytics & BI", blurb: "From raw tables to answers a business can act on, with the cleaning and the caveats shown, not hidden.", items: ["ridgeline", "supplychain", "purchasing", "retention", "fraud", "fpa"] },
   { id: "finance", name: "Finance, Treasury & FP&A", blurb: "Close, reconcile, plan and explain. Built in Excel the way finance teams build, with a web view on top.", items: ["treasury", "fpa", "credit"] },
   { id: "software", name: "Software & Systems", blurb: "Performance, correctness and clean architecture: compiled code, typed front ends and services with tests.", items: ["haulroute", "waybill", "lakehouse"] },
@@ -182,7 +186,7 @@ document.getElementById("links").innerHTML = [
   ME.phone && `<a class="btn" href="tel:+1${ME.phone.replace(/\D/g, "")}">${ME.phone}</a>`,
 ].filter(Boolean).join("");
 document.getElementById("stats").innerHTML = [
-  [14, "projects + 3 business cases"], [ROLES.filter(r => r.items.length).length, "role areas"],
+  [15, "projects + 3 business cases"], [ROLES.filter(r => r.items.length).length, "role areas"],
   ["Python · SQL", "plus C++, TypeScript, R"], ["Excel · Power BI", "for the finance work"],
 ].map(([b, s]) => `<div><b class="${typeof b === "number" ? "" : "text"}">${b}</b><span>${s}</span></div>`).join("");
 document.getElementById("nav").innerHTML = ROLES.map(r => `<a href="#${r.id}">${r.name}</a>`).join("");
